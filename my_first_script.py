@@ -8,7 +8,7 @@
 # total_cost = bread + eggs + milk
 # print(f"Your total is ${total_cost}")
 
-my_list = [1,2,"apple",4.5,"tomato",75]
+#my_list = [1,2,"apple",4.5,"tomato",75]
 # get_item = my_list[2]
 # print(get_item)
 
