@@ -1,9 +1,12 @@
 # Changelog
 
-## [1.0.0] 2025-02-11
+## [1.0.0] - 2025-02-11
 ### Added
-- ga_core.py: add functionsto add, edit, list, and remove items from a grocery list
-- ga_launch.py: add functions to interact with user to add, edit, and remove items from a grocery list
+- ga_core.py: add functions to add, edit, list, and remove items from
+  a grocery list
+  
+- ga_launch.py: add functions to interact with user to add, edit, and remove 
+  items from a grocery list
 
 ### Removed
 - my_first_script.py
