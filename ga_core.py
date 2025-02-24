@@ -1,14 +1,20 @@
 # list of items for grocery list
-grocery_list = [
-    {"name": "milk", "store": "Walmart", "cost": 2.50, "amount": 2, "priority": 1, "buy": True},
-    {"name": "bread", "store": "Walmart", "cost": 3.00, "amount": 2, "priority": 1, "buy": True},
-    {"name": "eggs", "store": "Walmart", "cost":  6.10, "amount": 1, "priority": 1, "buy": True},
-    {"name": "peanut butter", "store": "Costco", "cost": 2.80, "amount": 1, "priority": 3, "buy": False},
-    {"name": "chicken", "store": "Costco", "cost": 12.25, "amount": 1, "priority": 2, "buy": False}
+grocery_list: list[dict[str, float | int | str | bool]] = [
+    {"name": "milk", "store": "Walmart", "cost": 2.50, "amount": 2,
+      "priority": 1, "buy": True},
+    {"name": "bread", "store": "Walmart", "cost": 3.00, "amount": 2,
+      "priority": 1, "buy": True},
+    {"name": "eggs", "store": "Walmart", "cost":  6.10, "amount": 1,
+      "priority": 1, "buy": True},
+    {"name": "peanut butter", "store": "Costco", "cost": 2.80, "amount": 1,
+      "priority": 3, "buy": False},
+    {"name": "chicken", "store": "Costco", "cost": 12.25, "amount": 1,
+      "priority": 2, "buy": False}
 ]
 # this block of code allows adding new items to grocery list
 def add_item(name, store, cost, amount, priority, buy):
-    item = {"name": name, "store": store, "cost": cost, "amount": amount, "priority": priority, "buy":  buy}
+    item = {"name": name, "store": store, "cost": cost, "amount": amount,
+             "priority": priority, "buy":  buy}
     grocery_list.append(item)
 # this block of code allows removing items from grocery list
 def remove_item(name):
@@ -16,8 +22,11 @@ def remove_item(name):
     grocery_list.pop(index)
 
 # allows change at any index in the list
-def edit_item(name, store=None, cost=None, amount=None, priority=None, buy="skip"):
+def edit_item(name, store=None, cost=None, amount=None,
+               priority=None, buy="skip"):
+    
     index = get_index_from_name(name)
+
     # this block of code keeps original values for unchanged indexes
     old_item = grocery_list[index]
 
@@ -36,9 +45,11 @@ def edit_item(name, store=None, cost=None, amount=None, priority=None, buy="skip
     if  buy == "skip":
         buy = old_item["buy"]
 
-    item = {"name": name, "store": store, "cost": cost, "amount": amount, "priority": priority, "buy":  buy}
+    item = {"name": name, "store": store, "cost": cost, "amount": amount, 
+            "priority": priority, "buy":  buy}
 
     grocery_list[index] = item
+    
 # this block of code exports buy items to a buy list 
 def export_items():
     buy_list = []
@@ -49,8 +60,12 @@ def export_items():
     # Prints buy list
     if buy_list:
         for item in buy_list:
-            print(f"name: {item["name"]} - store: {item["store"]} - cost: ${item["cost"]} - amount: {item["amount"]} - priority: {item["priority"]}")
-        # 
+            print(
+                f"name: {item["name"]} - store: {item["store"]} - "
+                f"cost: ${item["cost"]} - amount: {item["amount"]} - "
+                f"priority: {item["priority"]}"
+            )
+        
         total_cost = calculate_total_cost(buy_list, round_cost=True)
 
 
@@ -62,6 +77,7 @@ def get_index_from_name(name):
             return index
         else:
             index += 1
+
 # Print each item in the grocery list
 def list_item():
     for item in grocery_list:
