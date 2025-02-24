@@ -1,54 +1,72 @@
 # Ipmorts the core module
 import ga_core
 print()
+
 # Prints welcome message for app
 print("Welcome to Tim's Grocery App! Let's Make Shopping Easier!")
 print()
+
 def launch():
+    """ 
+    This is the Begining of the program
+    
+     User enters one of the listed commands
+      then enters each of the Items details
+
+        """
     while True:
-        command = input("Enter a command (add, remove, edit, list, export, or quit): ")
+        command: str = input(
+            "Enter a command (add, remove, edit, list, export, or quit): "
+        )
        
-        # allows user to add new item to list
+        # Allows user to add new item to list
         if command == "add":  
            print("Enter details for new item")
            name, store, cost, amount, priority, buy = get_inputs()
-           ga_core.add_item(name=name, store=store, cost=cost, amount=amount, priority=priority, buy=buy)
+           ga_core.add_item(
+                            name = name,
+                            store = store,
+                            cost = cost,
+                            amount = amount,
+                            priority = priority,
+                            buy = buy
+                            )
 
-        # allows entering name of item to be removed from list
+        # Allows entering name of item to be removed from list
         if command == "remove":
-            name = input("Enter name of item to remove: ")
+            name: str = input("Enter name of item to remove: ") 
 
             ga_core.remove_item(name)
 
-        # allows editing items in list
+        # Allows editing items in list
         if command == "edit":
             name, store, cost, amount, priority, buy = get_inputs()
             ga_core.edit_item(name, store, cost, amount, priority, buy)
 
-        # list the entire grocery list
+        # List the entire grocery list
         if command == "list":
             print("These are the current items in the grocery list")
             ga_core.list_item()
 
-        # list items marked buy
+        # List items marked buy
         if command == "export":
             print("these are the current items in the buy list")
             ga_core.export_items()
 
-        # quits the program
+        # Quits the program
         if command == "quit":
             break
 
 def get_inputs():
-            # user inputs name of item
+            # User inputs name of item
             while True:
-                name = input("Enter item name: ")
+                name: str = input("Enter item name: ") 
                 if name:
                     break
                 print("Invalid input. Please enter a valid item")
-            # user chooses the store for each item
+            # User chooses the store for each item
             while True:
-                store = input("Enter store name: ")
+                store: str = input("Enter store name: ")
                 if store == "skip":
                     store = None
                     break
@@ -56,10 +74,11 @@ def get_inputs():
                     store = store
                     break
                 print("Invalid input. Please add a valid store name")
-            # allows user to input the price
+            # Allows user to input the price
             while True:
                 try:
-                    cost = (input("Enter the price of the item (i.e 6.25): "))
+                    cost: float = (input("Enter the price of the \
+item (i.e 6.25): "))
                     if cost == "skip":
                         cost = None
                         break
@@ -68,10 +87,11 @@ def get_inputs():
                         break
                 except ValueError:
                     print("Invalid input. please enter a valid price")
-            # alows user to enter the quanity tthey want
+            
             while True:
                 try:
-                    amount = (input("Enter item quantity (i.e 5): "))
+                    # Allows user to enter the quanity they want
+                    amount: int = (input("Enter item quantity (i.e 5): "))
                     if amount == "skip":
                         amount = None
                         break
@@ -80,10 +100,10 @@ def get_inputs():
                         break
                 except ValueError:
                     print("Invalid input. please enter a valid quantity")
-            # sets priority between 1 and 5
+            # Sets priority between 1 and 5
             while True:
                 try:
-                    priority = (input("Enter priority (1-5): "))
+                    priority: int = (input("Enter priority (1-5): "))
                     if priority == "skip":
                         priority = None
                         break
@@ -93,11 +113,15 @@ def get_inputs():
                         print("Priority must be between 1 and 5")
 
                 except ValueError:
-                    print("Invalid input. Please enter a number between 1 and 5")
-            # allows user to decide to buy the item or not
+                    print(
+                        "Invalid input. Please enter a number between 1 and 5"
+                        )
+                    
+            
             while True:
                 try:
-                    buy = input("buy (yes or no): ")
+                    # Allows user to decide to buy the item or not
+                    buy: str = input("buy (yes or no): ")
                     if buy.lower() == "yes":
                         buy =  True
                         break
