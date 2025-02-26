@@ -105,8 +105,9 @@ def remove_item(name: str):
           grocery_list.pop(index)
 
 
-def edit_item(name: str, store: str = None, cost: float = None, amount: int = None,
-               priority: int = None, buy: bool = "skip") -> None:
+def edit_item(name: str, store: str = None, cost: float = None, 
+              amount: int = None, priority: int = None, 
+              buy: bool = "skip") -> None:
     """
     Edits an existing item in the grocery list.
 
