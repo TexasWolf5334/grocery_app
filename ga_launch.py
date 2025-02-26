@@ -59,6 +59,7 @@ def launch():
         if command == "edit":
             name, store, cost, amount, priority, buy = get_inputs()
             ga_core.edit_item(name, store, cost, amount, priority, buy)
+            
             print(f"Item edited: Name: {name}, Store: {store}, Cost: {cost}, "
                   f"Amount: {amount}, Priority: {priority}, Buy: {buy}")
         
