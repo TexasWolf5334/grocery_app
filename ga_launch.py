@@ -59,7 +59,9 @@ def launch():
         if command == "edit":
             name, store, cost, amount, priority, buy = get_inputs()
             ga_core.edit_item(name, store, cost, amount, priority, buy)
-
+            print(f"Item edited: Name: {name}, Store: {store}, Cost: {cost}, "
+                  f"Amount: {amount}, Priority: {priority}, Buy: {buy}")
+        
         # List the entire grocery list
         if command == "list":
             print("These are the current items in the grocery list")
@@ -105,13 +107,13 @@ def get_inputs():
               False if not, or None if skipped.
     """
     while True:
-        name = input("Enter item name: ") 
+        name = input("Enter item name (i.e milk): ") 
         if name:
             break
         print("Invalid input. Please enter a valid item")
 
     while True:
-        store = input("Enter store name: ")
+        store = input("Enter store name (i.e Walmart): ")
         if store == "skip":
             store = None
             break
