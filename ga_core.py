@@ -1,4 +1,48 @@
-# list of items for grocery list
+"""
+grocery_list_core
+
+This module serves as the core functionality for managing a grocery list.
+It provides essential operations for creating, updating, and managing grocery
+items, allowing users to maintain a structured list of items to be purchased
+from various stores.
+
+Functions:
+    add_item(name: str, store: str, cost: float, amount: int, priority: int,
+            buy: bool) -> None
+        Adds a new item to the provided grocery list.
+
+    remove_item(name: str)
+        Removes an item from the provided grocery list by its name.
+        Returns True if the item was successfully removed, False otherwise.
+
+    edit_item(name: str, store: str = None, cost: float = None, amount: int = None,
+               priority: int = None, buy: bool = "skip") -> None:
+        Updates the details of an existing item in the grocery list.
+        Accepts keyword arguments for the fields to be updated.
+
+   export_items():
+    Exports and prints a list of items marked for purchase from the 
+    grocery list.
+
+    This function iterates through a predefined `grocery_list`, 
+    checking each item to determine if it is marked for purchase 
+    (i.e., if the "buy" key is set to True). 
+    If an item is marked for purchase, it is added to a `buy_list`.
+
+    list_item():
+        Displays the current grocery list with all items and their details.
+
+Attributes:
+    grocery_list (list[dict[str, float | int | str | bool]]): A list of dictionaries,
+    where each dictionary represents a grocery item with the following keys:
+        - "name" (str): The name of the grocery item.
+        - "store" (str): The name of the store where the item can be purchased.
+        - "cost" (float): The cost of a single unit of the item.
+        - "amount" (int): The quantity of the item to be purchased.
+        - "priority" (int): The priority level of the item for purchase (lower numbers indicate higher priority).
+        - "buy" (bool): A flag indicating whether the item should be bought (True) or not (False).
+"""
+
 grocery_list: list[dict[str, float | int | str | bool]] = [
     {"name": "milk", "store": "Walmart", "cost": 2.50, "amount": 2,
       "priority": 1, "buy": True},
@@ -240,7 +284,7 @@ def calculate_total_cost(grocery_list, round_cost=False, tax=0.0825):
         
     # Round the cost
     if round_cost:
-        total_cost = round(total_cost)    
+        total_cost = round(total_cost, 2)    
     
     # Add the tax
     if tax:
